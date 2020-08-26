@@ -20,7 +20,13 @@ namespace BlazorServerReduxFluxorApp.Store.FetchData
 
         public override FetchDataState Reduce(FetchDataState state, FetchDataAction action)
         {
-            return new FetchDataState(GetWeatherForecastDataAsync().Result);
+            //return new FetchDataState(GetWeatherForecastDataAsync().Result);
+            return new FetchDataState(action.GetWeatherForecastDataAsync().Result);
+
+            //No estoy seguro cual de estas dos formas es correcta, 
+            //si usamos la 1era, debemos modificar en FetchData.razor la llamada al 
+            //Dispatcher.Dispatch(new FetchDataAction());
+            //Es decir sin eviarle el servicio dentro de FetchDataAction
         }
 
         private async Task<WeatherForecast[]> GetWeatherForecastDataAsync()

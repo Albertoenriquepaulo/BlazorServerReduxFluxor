@@ -9,5 +9,17 @@ namespace BlazorServerReduxFluxorApp.Store.FetchData
 {
     public class FetchDataAction
     {
+        private readonly WeatherForecastService _forecastService;
+
+        public FetchDataAction(WeatherForecastService forecastService)
+        {
+            _forecastService = forecastService;
+        }
+
+        public async Task<WeatherForecast[]> GetWeatherForecastDataAsync()
+        {
+            return await _forecastService.GetForecastAsync(DateTime.Now);
+        }
+
     }
 }

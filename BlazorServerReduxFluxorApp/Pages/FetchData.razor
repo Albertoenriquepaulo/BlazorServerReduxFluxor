@@ -2,6 +2,7 @@
 @inherits FluxorComponent
 @inject IDispatcher Dispatcher
 @inject IState<FetchDataState> FetchDataState
+@inject WeatherForecastService ForecastService
 
 @using BlazorServerReduxFluxorApp.Data
 @*@inject WeatherForecastService ForecastService*@
@@ -65,7 +66,7 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        Dispatcher.Dispatch(new FetchDataAction());
+        Dispatcher.Dispatch(new FetchDataAction(ForecastService));
         //  forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
 }
