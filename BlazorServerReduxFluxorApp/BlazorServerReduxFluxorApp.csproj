@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Fluxor" Version="3.6.0" />
+    <PackageReference Include="Fluxor.Blazor.Web" Version="3.6.0" />
+    <PackageReference Include="Fluxor.Blazor.Web.ReduxDevTools" Version="3.6.0" />
+  </ItemGroup>
+
 </Project>

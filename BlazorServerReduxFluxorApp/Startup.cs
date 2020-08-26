@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using BlazorServerReduxFluxorApp.Data;
+using Fluxor;
+using System.Reflection;
 
 namespace BlazorServerReduxFluxorApp
 {
@@ -29,6 +31,12 @@ namespace BlazorServerReduxFluxorApp
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
+            services.AddFluxor(options =>
+            {
+                options.ScanAssemblies(Assembly.GetExecutingAssembly());
+                options.UseRouting();
+                options.UseReduxDevTools();
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
