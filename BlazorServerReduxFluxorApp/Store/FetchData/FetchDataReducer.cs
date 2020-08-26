@@ -20,10 +20,10 @@ namespace BlazorServerReduxFluxorApp.Store.FetchData
 
         public override FetchDataState Reduce(FetchDataState state, FetchDataAction action)
         {
-            return new FetchDataState(OnInitializedAsync().Result);
+            return new FetchDataState(GetWeatherForecastDataAsync().Result);
         }
 
-        private async Task<WeatherForecast[]> OnInitializedAsync()
+        private async Task<WeatherForecast[]> GetWeatherForecastDataAsync()
         {
             return await _forecastService.GetForecastAsync(DateTime.Now);
         }
